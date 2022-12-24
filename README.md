@@ -1,0 +1,1 @@
+# paletobank_minigame
