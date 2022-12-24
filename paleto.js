@@ -43,31 +43,32 @@ class NoPixel_Fleeca{
 
         
     
-        let count = 7;
-        while (count > 0) {
-            let hide_number = Math.floor(Math.random() * (11 + 1));
+        let count = 0;
+        while (count < 7) {
+            let hide_number = Math.floor(Math.random() * 12);
             if (real_numbers[hide_number] != '') {
                 real_numbers[hide_number] = '';  
-                count--;
+                count++;
             }
             
         }
 
-        let index_arr; index_arr = this.range(0, 4);
-        let getFirstSolution = false, index1, index2;
+        let index_arr; index_arr = this.range(1, 5);
+        let index1, index2;
         count = 0;
         for (let i = 0; i < 12; i++) {
 
-            if (real_numbers[i] != '') {
+            if (real_numbers[i] != '' && count < 4) {
                 index_arr[count] = i;
                 count++;
             }
-            if (count == 4) break;
         }
         
-        this.shuffle(index_arr);
-        index1 = index_arr[0]; 
-        index2 = index_arr[1];
+        while (index1 == index2) {
+            index1 = index_arr[Math.floor(Math.random() * 4)];
+            index2 = index_arr[Math.floor(Math.random() * 4)];
+        }
+        
 
         impostor_numbers = this.range(1, 12);
         this.shuffle(impostor_numbers);
