@@ -14,6 +14,24 @@ class NoPixel_Fleeca{
             arr[j] = temp;
         }
     }
+
+    shuffle_quiz = (array) => {
+        let currentIndex = array.length - 1,  randomIndex;
+      
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+      
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      
+        return array;
+      }
     
     shapes = ['square', 'rectangle', 'circle', 'triangle'];
     inner_shapes = ['square', 'square2', 'rectangle', 'rectangle2', 'circle', 'circle2', 'triangle'];
@@ -64,10 +82,15 @@ class NoPixel_Fleeca{
             }
         }
         
-        while (index1 == index2) {
-            index1 = index_arr[Math.floor(Math.random() * 4)];
-            index2 = index_arr[Math.floor(Math.random() * 4)];
-        }
+        this.shuffle_quiz(index_arr);
+
+        index1 = index_arr[0];
+        index2 = index_arr[1];
+
+        // while (index1 == index2) {
+        //     index1 = index_arr[Math.floor(Math.random() * 4)];
+        //     index2 = index_arr[Math.floor(Math.random() * 4)];
+        // }
         
 
         impostor_numbers = this.range(1, 12);
